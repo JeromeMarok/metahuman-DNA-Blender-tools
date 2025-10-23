@@ -95,8 +95,8 @@ jobs:
       - name: Run Hammer Build Tool
         run: |
           python -m venv .venv
-          .\.venv\Scripts\activate
-          .\bin\windows\amd64\hammer.exe build --github-token ${{ secrets.GH_PAT }} --product-id ${{ inputs.product-id }} --python-version ${{ inputs.python-version }} --blender-version ${{ inputs.blender-version }}
+          . .venv/bin/activate # Correct activation for Linux shell
+          ./bin/linux/x86_64/hammer build --github-token ${{ secrets.GH_PAT }} --product-id ${{ inputs.product-id }} --python-version ${{ inputs.python-version }} --blender-version ${{ inputs.blender-version }}
 
       - name: Upload Linux x86_64 Artifacts
         uses: actions/upload-artifact@v4
